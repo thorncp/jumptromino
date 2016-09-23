@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 
     public void Start()
     {
+        Cursor.visible = false;
         AddNewPiece();
     }
 
