@@ -1,3 +1,3 @@
-# Jumptris
+# Jumptromino
 
-![Jumptris](jumptris.gif)
+![Jumptromino](jumptris.gif)
