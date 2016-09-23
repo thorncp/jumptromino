@@ -2,6 +2,8 @@
 
 public class CameraController : MonoBehaviour
 {
+    public GameObject spawnPoint;
+
     private Vector3 startPosition;
     private GameObject piece;
     private bool birdsEye;
@@ -11,7 +13,7 @@ public class CameraController : MonoBehaviour
     {
         birdsEye = false;
         startPosition = transform.position;
-        offset = new Vector3(0, 0, 0) + transform.position;
+        offset = transform.position - spawnPoint.transform.position;
     }
 
     void LateUpdate()

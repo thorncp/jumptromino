@@ -3,6 +3,7 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
+    public GameObject spawnPoint;
     public GameObject[] piecePrefabPool;
     public float newPieceDelay;
 
@@ -33,7 +34,11 @@ public class GameController : MonoBehaviour
     {
         var index = random.Next(0, piecePrefabPool.Length);
         var startPiecePrefab = piecePrefabPool[index];
-        var nextPiece = Instantiate(startPiecePrefab);
+        var nextPiece = Instantiate(
+            startPiecePrefab,
+            spawnPoint.transform.position,
+            startPiecePrefab.transform.rotation
+        ) as GameObject;
         nextPiece.GetComponent<PieceController>().gameController = this;
         var camera = Camera.main.GetComponent<CameraController>();
         camera.Follow(nextPiece);
