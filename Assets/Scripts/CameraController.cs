@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
                 var birdsEyePostition = new Vector3(
                     piece.transform.position.x,
                     piece.transform.position.y + offset.y * 4,
-                    piece.transform.position.z
+                    piece.transform.position.z - 2
                 );
                 transform.position = Vector3.MoveTowards(
                     transform.position,
