@@ -575,6 +575,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011539073422, guid: e0dfe870441694e08a8ca8de3d8d15c4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -612,6 +617,36 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1224191478}
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.data[4]
+      value: 
+      objectReference: {fileID: 1000012459645754, guid: 9f7ee8d26dc94d9478570b33260ecc66,
+        type: 2}
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000012037611688, guid: 6963c7f5590b01140a70b6f4a1d0fd9d,
+        type: 2}
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000011630058670, guid: 4b66b40ccb204498c8fda88f6d132b7c,
+        type: 2}
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.data[2]
+      value: 
+      objectReference: {fileID: 1000011341581848, guid: f1e82e67c8fc6624e80fc7d6c95be671,
+        type: 2}
+    - target: {fileID: 114000011022583988, guid: e0dfe870441694e08a8ca8de3d8d15c4,
+        type: 2}
+      propertyPath: piecePrefabPool.Array.data[3]
+      value: 
+      objectReference: {fileID: 1000010170592142, guid: 12a65e20fe75fb14eaaa3080a86e2173,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0dfe870441694e08a8ca8de3d8d15c4, type: 2}
   m_IsPrefabParent: 0
@@ -712,7 +747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013912705296, guid: 11623e7ff7d2d4ecbad412bdf0bdd57b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000013912705296, guid: 11623e7ff7d2d4ecbad412bdf0bdd57b, type: 2}
       propertyPath: m_LocalPosition.z
