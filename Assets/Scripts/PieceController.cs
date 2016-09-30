@@ -29,15 +29,20 @@ public class PieceController : MonoBehaviour
             var movement = new Vector3(moveHorizontal, 0f, moveVertical);
             rb.AddForce(movement * speed);
 
-            if (canJump && Input.GetKeyDown(KeyCode.Space))
+            if (canJump)
             {
-                rb.AddForce(
-                    new Vector3(0, jumpStrength, 0f),
-                    ForceMode.Impulse
-                );
-                rb.rotation = Quaternion.identity;
-                speed = afterJumpSpeed;
-                canJump = false;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    rb.AddForce(
+                        new Vector3(0, jumpStrength, 0f),
+                        ForceMode.Impulse
+                    );
+                    rb.rotation = Quaternion.identity;
+                    speed = afterJumpSpeed;
+                    canJump = false;
+                }
+
+                rb.AddTorque(movement);
             }
 
             if (!canJump)
