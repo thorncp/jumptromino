@@ -3,6 +3,7 @@
 public class PieceController : MonoBehaviour
 {
     public float speed;
+    public float rotationSpeed;
     public float afterJumpSpeed;
     public float jumpStrength;
     public GameController gameController;
@@ -34,8 +35,32 @@ public class PieceController : MonoBehaviour
                     new Vector3(0, jumpStrength, 0f),
                     ForceMode.Impulse
                 );
+                rb.rotation = Quaternion.identity;
                 speed = afterJumpSpeed;
                 canJump = false;
+            }
+
+            if (!canJump)
+            {
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    rb.AddTorque(Vector3.right * rotationSpeed * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    rb.AddTorque(Vector3.left * rotationSpeed * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    rb.AddTorque(Vector3.forward * rotationSpeed * Time.deltaTime);
+                }
+
+                if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    rb.AddTorque(Vector3.back * rotationSpeed * Time.deltaTime);
+                }
             }
         }
     }

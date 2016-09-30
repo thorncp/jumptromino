@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(
                     transform.position,
                     birdsEyePostition,
-                    0.75f
+                    30f * Time.deltaTime
                 );
             }
             else
