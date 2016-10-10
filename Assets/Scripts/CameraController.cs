@@ -3,6 +3,7 @@
 public class CameraController : MonoBehaviour
 {
     public GameObject spawnPoint;
+    public float yOffset = 4;
 
     private Vector3 startPosition;
     private GameObject piece;
@@ -24,7 +25,7 @@ public class CameraController : MonoBehaviour
             {
                 var birdsEyePostition = new Vector3(
                     piece.transform.position.x,
-                    piece.transform.position.y + offset.y * 4,
+                    piece.transform.position.y + offset.y * yOffset,
                     piece.transform.position.z - 2
                 );
                 transform.position = Vector3.MoveTowards(
