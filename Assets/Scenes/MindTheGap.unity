@@ -911,6 +911,11 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1224191478}
+    - target: {fileID: 114000013412017548, guid: 084aba98fad1a4ef59387eb1b8e0e525,
+        type: 2}
+      propertyPath: birdsEyeYOffset
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 084aba98fad1a4ef59387eb1b8e0e525, type: 2}
   m_IsPrefabParent: 0
