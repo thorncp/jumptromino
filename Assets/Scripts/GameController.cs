@@ -1,18 +1,30 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public GameObject spawnPoint;
     public GameObject[] piecePrefabPool;
+    public GameObject heightGoalPlane;
+    public Text goalText;
+    public Text heightText;
     public float newPieceDelay;
 
     private System.Random random = new System.Random();
     private bool waitingToAddPiece;
+    private float heightGoal
+    {
+        get { return heightGoalPlane.transform.position.y; }
+    }
 
     public void Start()
     {
         Cursor.visible = false;
+        goalText.text = String.Format("Goal: {0:0.0##}", heightGoal);
+        heightText.text = String.Format("Current: {0:0.0##}", DetermineHeight());
         AddNewPiece();
     }
 
@@ -20,8 +32,17 @@ public class GameController : MonoBehaviour
     {
         if (waitingToAddPiece && AllPiecesStill())
         {
-            Invoke("AddNewPiece", newPieceDelay);
-            waitingToAddPiece = false;
+            goalText.text = String.Format("Goal: {0:0.0##}", heightGoal);
+            heightText.text = String.Format("Current: {0:0.0##}", DetermineHeight());
+            if (goalReached())
+            {
+                Invoke("ReloadScene", newPieceDelay);
+            }
+            else
+            {
+                Invoke("AddNewPiece", newPieceDelay);
+                waitingToAddPiece = false;
+            }
         }
     }
 
@@ -56,5 +77,24 @@ public class GameController : MonoBehaviour
         }
 
         return true;
+    }
+
+    private float DetermineHeight()
+    {
+        return GameObject.FindGameObjectsWithTag("Piece").
+            Select(p => p.GetComponent<Collider>().bounds.max.y).
+            DefaultIfEmpty(0).
+            Max();
+    }
+
+    private bool goalReached()
+    {
+        return DetermineHeight() >= heightGoal;
+    }
+
+    private void ReloadScene()
+    {
+        var scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
