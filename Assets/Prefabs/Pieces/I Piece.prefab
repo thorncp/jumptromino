@@ -402,6 +402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   rotationSpeed: 100
-  afterJumpSpeed: 10
+  afterJumpSpeed: 12
   jumpStrength: 30
   gameController: {fileID: 0}
