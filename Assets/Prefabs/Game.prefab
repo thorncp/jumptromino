@@ -51,9 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa68202e28f04d569c999631c7ff585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
   piecePrefabPool:
-  - {fileID: 1000013511071354, guid: 6963c7f5590b01140a70b6f4a1d0fd9d, type: 2}
-  - {fileID: 1000011706579328, guid: f1e82e67c8fc6624e80fc7d6c95be671, type: 2}
-  - {fileID: 1000012055222218, guid: 12a65e20fe75fb14eaaa3080a86e2173, type: 2}
-  - {fileID: 1000014124029328, guid: 9f7ee8d26dc94d9478570b33260ecc66, type: 2}
+  - {fileID: 1000012037611688, guid: 6963c7f5590b01140a70b6f4a1d0fd9d, type: 2}
+  - {fileID: 1000011630058670, guid: 4b66b40ccb204498c8fda88f6d132b7c, type: 2}
+  - {fileID: 1000011341581848, guid: f1e82e67c8fc6624e80fc7d6c95be671, type: 2}
+  - {fileID: 1000010170592142, guid: 12a65e20fe75fb14eaaa3080a86e2173, type: 2}
+  - {fileID: 1000012459645754, guid: 9f7ee8d26dc94d9478570b33260ecc66, type: 2}
+  heightGoalPlane: {fileID: 0}
+  targetFloor: {fileID: 0}
+  goalText: {fileID: 0}
+  heightText: {fileID: 0}
+  gameOverText: {fileID: 0}
   newPieceDelay: 0.5
+  baskInTheGloryTime: 5

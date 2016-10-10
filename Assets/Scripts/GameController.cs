@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class GameController : MonoBehaviour
     public GameObject spawnPoint;
     public GameObject[] piecePrefabPool;
     public GameObject heightGoalPlane;
+    public GameObject floorPlane;
     public Text goalText;
     public Text heightText;
     public Text gameOverText;
@@ -20,14 +22,21 @@ public class GameController : MonoBehaviour
     private int pieceCount = 0;
     private float heightGoal
     {
-        get { return heightGoalPlane.transform.position.y; }
+        get
+        {
+            return Math.Abs(baseHeight - heightGoalPlane.GetComponent<Renderer>().bounds.max.y);
+        }
+    }
+    private float baseHeight
+    {
+        get { return floorPlane.GetComponent<Renderer>().bounds.max.y; }
     }
 
     public void Start()
     {
         Cursor.visible = false;
-        goalText.text = String.Format("Goal: {0:0.0##}", heightGoal);
-        heightText.text = String.Format("Current: {0:0.0##}", DetermineHeight());
+        goalText.text = String.Format("Goal: {0:0.0##}\"", heightGoal);
+        heightText.text = String.Format("Current: {0:0.0##}\"", DetermineHeight());
         AddNewPiece();
     }
 
@@ -35,8 +44,8 @@ public class GameController : MonoBehaviour
     {
         if (waitingToAddPiece && AllPiecesStill())
         {
-            goalText.text = String.Format("Goal: {0:0.0##}", heightGoal);
-            heightText.text = String.Format("Current: {0:0.0##}", DetermineHeight());
+            goalText.text = String.Format("Goal: {0:0.0##}\"", heightGoal);
+            heightText.text = String.Format("Current: {0:0.0##}\"", DetermineHeight());
             if (goalReached())
             {
                 gameOverText.text = String.Format(
@@ -95,10 +104,12 @@ public class GameController : MonoBehaviour
 
     private float DetermineHeight()
     {
-        return GameObject.FindGameObjectsWithTag("Piece").
-            Select(p => p.GetComponent<Collider>().bounds.max.y).
-            DefaultIfEmpty(0).
+        var height = GameObject.FindGameObjectsWithTag("Piece").
+            SelectMany(p => MaxYs(p)).
+            DefaultIfEmpty(baseHeight).
             Max();
+
+        return Math.Abs(baseHeight - height);
     }
 
     private bool goalReached()
@@ -110,5 +121,13 @@ public class GameController : MonoBehaviour
     {
         var scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    private IEnumerable<float> MaxYs(GameObject obj)
+    {
+        foreach (Transform child in obj.transform)
+        {
+            yield return child.gameObject.GetComponent<MeshRenderer>().bounds.max.y;
+        }
     }
 }
