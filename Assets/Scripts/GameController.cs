@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour
     {
         get
         {
-            return Math.Abs(baseHeight - heightGoalPlane.GetComponent<Renderer>().bounds.max.y);
+            return Math.Abs(baseHeight - heightGoalPlane.transform.position.y);
         }
     }
     private float baseHeight
@@ -35,8 +35,7 @@ public class GameController : MonoBehaviour
     public void Start()
     {
         Cursor.visible = false;
-        goalText.text = String.Format("Goal: {0:0.0##}\"", heightGoal);
-        heightText.text = String.Format("Current: {0:0.0##}\"", DetermineHeight());
+        UpdateUI();
         AddNewPiece();
     }
 
@@ -44,17 +43,14 @@ public class GameController : MonoBehaviour
     {
         if (waitingToAddPiece && AllPiecesStill())
         {
-            goalText.text = String.Format("Goal: {0:0.0##}\"", heightGoal);
-            heightText.text = String.Format("Current: {0:0.0##}\"", DetermineHeight());
+            UpdateUI();
             if (goalReached())
             {
                 gameOverText.text = String.Format(
                     "You did it!\n" +
-                    "Goal: {0}\n" +
-                    "Achieved: {1}\n" +
-                    "Pieces: {2}",
-                    heightGoal,
-                    DetermineHeight(),
+                    FormatHeight("Goal", heightGoal) + "\n" +
+                    FormatHeight("Achieved", DetermineHeight()) + "\n" +
+                    "Pieces: {0}",
                     pieceCount
                 );
                 gameOverText.gameObject.SetActive(true);
@@ -114,7 +110,7 @@ public class GameController : MonoBehaviour
 
     private bool goalReached()
     {
-        return DetermineHeight() >= heightGoal;
+        return DetermineHeight() - heightGoal >= 0.0;
     }
 
     private void ReloadScene()
@@ -127,7 +123,19 @@ public class GameController : MonoBehaviour
     {
         foreach (Transform child in obj.transform)
         {
-            yield return child.gameObject.GetComponent<MeshRenderer>().bounds.max.y;
+            yield return
+                child.gameObject.GetComponent<MeshRenderer>().bounds.max.y;
         }
+    }
+
+    private void UpdateUI()
+    {
+        goalText.text = FormatHeight("Goal", heightGoal);
+        heightText.text = FormatHeight("Current", DetermineHeight());
+    }
+
+    private string FormatHeight(string context, float height)
+    {
+        return String.Format("{0}: {1:0.0##}\"", context, height);
     }
 }
