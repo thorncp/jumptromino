@@ -98,6 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 105466188}
+  - 64: {fileID: 105466189}
   m_Layer: 0
   m_Name: TargetPad
   m_TagString: Untagged
@@ -120,6 +121,18 @@ Transform:
   - {fileID: 643941672}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!64 &105466189
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105466187}
+  m_Material: {fileID: 13400000, guid: 7324e0a5c140d9e4f941daa6ca724912, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!1 &368379856
 GameObject:
   m_ObjectHideFlags: 0

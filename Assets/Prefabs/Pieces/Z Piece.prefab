@@ -93,6 +93,7 @@ GameObject:
   - 4: {fileID: 4000013496010680}
   - 54: {fileID: 54000012094991634}
   - 114: {fileID: 114000013908758214}
+  - 64: {fileID: 64000011026677000}
   m_Layer: 0
   m_Name: Z Piece
   m_TagString: Piece
@@ -328,6 +329,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &64000011026677000
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012459645754}
+  m_Material: {fileID: 13400000, guid: 7324e0a5c140d9e4f941daa6ca724912, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!65 &65000010215141666
 BoxCollider:
   m_ObjectHideFlags: 1

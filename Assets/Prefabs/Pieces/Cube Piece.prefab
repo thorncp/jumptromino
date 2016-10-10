@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000010965665426}
   - 54: {fileID: 54000010714511344}
   - 114: {fileID: 114000011255315370}
+  - 64: {fileID: 64000014056225126}
   m_Layer: 0
   m_Name: Cube Piece
   m_TagString: Piece
@@ -328,6 +329,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &64000014056225126
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012037611688}
+  m_Material: {fileID: 13400000, guid: 7324e0a5c140d9e4f941daa6ca724912, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
 --- !u!65 &65000010396045374
 BoxCollider:
   m_ObjectHideFlags: 1
