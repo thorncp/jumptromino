@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public Text gameOverText;
     public float newPieceDelay;
     public float baskInTheGloryTime = 5f;
+    public Camera mainCamera;
 
     private System.Random random = new System.Random();
     private bool waitingToAddPiece;
@@ -80,7 +81,7 @@ public class GameController : MonoBehaviour
             startPiecePrefab.transform.rotation
         ) as GameObject;
         nextPiece.GetComponent<PieceController>().gameController = this;
-        var camera = Camera.main.GetComponent<CameraController>();
+        var camera = mainCamera.GetComponent<CameraController>();
         camera.Follow(nextPiece);
     }
 
