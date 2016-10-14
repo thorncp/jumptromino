@@ -75,12 +75,19 @@ public class PieceController : MonoBehaviour
         if (other.gameObject.CompareTag("Control Trigger"))
         {
             gameController.AddNewPieceAfterTimeout();
-            Destroy(this);
+            playerHasControl = false;
         }
         else if (other.gameObject.CompareTag("Camera Trigger"))
         {
             var camera = Camera.main.GetComponent<CameraController>();
             camera.TransitionToBirdsEye();
+        }
+        else if (other.gameObject.CompareTag("Abyss") && this.enabled)
+        {
+            this.enabled = false;
+            Debug.Log("Abyss Trigger");
+            gameController.PieceEnteredAbyss(this.gameObject);
+            Destroy(this);
         }
     }
 }

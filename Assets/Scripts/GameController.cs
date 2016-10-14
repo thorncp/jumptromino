@@ -70,6 +70,14 @@ public class GameController : MonoBehaviour
         waitingToAddPiece = true;
     }
 
+    public void PieceEnteredAbyss(GameObject piece)
+    {
+        var camera = mainCamera.GetComponent<CameraController>();
+        camera.Unfollow();
+        AddNewPieceAfterTimeout();
+        Destroy(piece, newPieceDelay * 2);
+    }
+
     private void AddNewPiece()
     {
         pieceCount += 1;

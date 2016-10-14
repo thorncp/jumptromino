@@ -6,7 +6,6 @@ public class FlyByController : MonoBehaviour
 
     public void SwitchToMainCamera()
     {
-        Debug.Log("hello");
         Destroy(GetComponent<Animator>());
         mainCamera.gameObject.SetActive(true);
         mainCamera.enabled = true;

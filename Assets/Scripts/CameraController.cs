@@ -54,4 +54,9 @@ public class CameraController : MonoBehaviour
         this.piece = piece;
         offset = startPosition - piece.transform.position;
     }
+
+    public void Unfollow()
+    {
+        this.piece = null;
+    }
 }
