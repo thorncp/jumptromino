@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
                     pieceCount
                 );
                 gameOverText.gameObject.SetActive(true);
-                Invoke("ReloadScene", baskInTheGloryTime);
+                Invoke("EndScene", baskInTheGloryTime);
             }
             else
             {
@@ -114,10 +114,9 @@ public class GameController : MonoBehaviour
         return DetermineHeight() - heightGoal >= 0.0;
     }
 
-    private void ReloadScene()
+    private void EndScene()
     {
-        var scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private IEnumerable<float> MaxYs(GameObject obj)
